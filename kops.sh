@@ -11,8 +11,8 @@ chmod +x kops-linux-amd64 kubectl
 mv kubectl /usr/local/bin/kubectl
 mv kops-linux-amd64 /usr/local/bin/kops
 
-aws s3api create-bucket --bucket dhana.k8s.local --region us-east-1
-aws s3api put-bucket-versioning --bucket dhana.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+aws s3api create-bucket --bucket dhana.k8s.local --region us-east-2
+aws s3api put-bucket-versioning --bucket dhana.k8s.local --region us-east-2 --versioning-configuration Status=Enabled
 export KOPS_STATE_STORE=s3://dhana.k8s.local
-kops create cluster --name prakash.k8s.local --zones us-east-1a,us-east-1b --master-size t2.medium --master-count 1 --node-size t2.micro --node-count 2
+kops create cluster --name prakash.k8s.local --zones us-east-2a,us-east-2b --master-size t2.medium --master-count 1 --node-size t2.micro --node-count 2
 kops update cluster --name prakash.k8s.local --yes --admin
